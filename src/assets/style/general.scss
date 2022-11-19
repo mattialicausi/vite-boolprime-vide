@@ -6,3 +6,16 @@ $fa-font-path: '../webfonts';
 @import '@fortawesome/fontawesome-free/scss/solid.scss';
 @import '@fortawesome/fontawesome-free/scss/regular.scss';
 @import 'bootstrap/scss/bootstrap';
+
+//MODIFICHE GENERALI LAYOUT
+body {
+    background-color: $bg-color;
+    color: $text-white;
+}
+
+.header-search-section {
+    height: 100px;
+    border-bottom: 1px solid white;
+}
+
+
