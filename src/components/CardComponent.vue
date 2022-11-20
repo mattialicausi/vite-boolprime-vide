@@ -6,7 +6,7 @@
 
         <div class="info-card">
             <h4>{{item.original_title}}</h4>
-            <div>{{item.vote_average}}</div>
+            <span v-for="n in 5" class="fa-star" :class="(n <= star) ? 'fa-solid' : 'fa-regular'"></span>
 
             <div v-if="item.original_language" class="img-flag">
                 <img :src="this.flagURL + item.original_language" :alt="item.original_title">
@@ -36,6 +36,12 @@ import { store } from '../store';
             return {
                 flagURL: 'https://countryflagsapi.com/png/',
                 baseIMG: 'https://image.tmdb.org/t/p/w300/',
+            }
+        },
+
+        computed: {
+            star() {
+                return Math.ceil(this.item.vote_average / 2);
             }
         },
 
