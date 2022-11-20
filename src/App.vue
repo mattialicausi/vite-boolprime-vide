@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeaderComponent/>
+    <HeaderComponent :items="store.popular"/>
   </div>
     <MainComponent title="Film" :items="store.movie"/>
   <div>
@@ -14,14 +14,17 @@
 <script>
 import HeaderComponent from './components/HeaderComponent.vue';
 import MainComponent from './components/MainComponent.vue';
+;
 import {store} from './store';
 import axios from 'axios';
+
 
   export default {
     components: {
     HeaderComponent,
-    MainComponent
-  },
+    MainComponent,
+  
+},
   data() {
     return {
       store,
@@ -33,6 +36,7 @@ import axios from 'axios';
         if(newVal !== oldVal){
           this.getMovies();
           this.getSeries();
+          //this.getPopular();
         }
     }
   },
@@ -58,7 +62,24 @@ import axios from 'axios';
         //console.log(store.tv)
         
       })
+    },
+
+    getPopular() {
+      const apiurl = store.baseURL + store.endPoint.popular;
+      const params = store.params;
+
+      axios.get(apiurl, {params}).then((res) => {
+        store.popular = res.data.results;
+        console.log(store.popular)
+        
+      })
     }
+    
+   
+  },
+
+  mounted() {
+    this.getPopular();
   },
 
 }

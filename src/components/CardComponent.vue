@@ -5,7 +5,7 @@
         </div>
 
         <div class="info-card">
-            <h4>{{item.original_title}}</h4>
+            <h4>{{item.original_title ? item.original_title : item.original_name}}</h4>
             <span v-for="n in 5" class="fa-star" :class="(n <= star) ? 'fa-solid' : 'fa-regular'"></span>
 
             <div v-if="item.original_language" class="img-flag">
