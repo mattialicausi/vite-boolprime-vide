@@ -1,15 +1,12 @@
 <template>
-    <section class="row">
-        <div v-for="(item, index) in items" :key="item.id">
-            <CardComponent :movie="item"/>
-        </div>
-        
-    </section>
 
-    <section>
-        <!-- TV Series -->
-        
+    <h2>{{title}}</h2>
+    <section class="mycarousel">
+        <div class="position-relative" v-for="(item, index) in items" :key="item.id">
+            <CardComponent :item="item"/>
+        </div>
     </section>
+        
 </template>
 
 <script>
@@ -30,7 +27,8 @@ import {store} from '../store';
     },
 
     props: {
-        items: Array
+        items: Array,
+        title: String
     },
 
 }
@@ -38,5 +36,8 @@ import {store} from '../store';
 
 <style lang="scss" scoped>
 @import '../assets/style/general.scss';
-
+    .mycarousel{
+        display: flex;
+        overflow-x: auto;
+    }
 </style>

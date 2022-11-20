@@ -2,7 +2,10 @@
   <div>
     <HeaderComponent/>
   </div>
-    <MainComponent :items="store.movie"/>
+    <MainComponent title="Film" :items="store.movie"/>
+  <div>
+  </div>
+    <MainComponent title="Serie TV" :items="store.tv"/>
   <div>
   
   </div>
@@ -29,6 +32,7 @@ import axios from 'axios';
     'store.params.query'(newVal, oldVal){
         if(newVal !== oldVal){
           this.getMovies();
+          this.getSeries();
         }
     }
   },
@@ -41,6 +45,16 @@ import axios from 'axios';
       axios.get(apiurl, {params}).then((res) => {
         store.movie = res.data.results;
         console.log(store.movie)
+      })
+    },
+
+    getSeries() {
+      const apiurl = store.baseURL + store.endPoint.tv;
+      const params = store.params;
+
+      axios.get(apiurl, {params}).then((res) => {
+        store.tv = res.data.results;
+        console.log(store.tv)
       })
     }
   },
