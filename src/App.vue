@@ -44,8 +44,9 @@ import axios from 'axios';
 
       axios.get(apiurl, {params}).then((res) => {
         store.movie = res.data.results;
-        console.log(store.movie)
-      })
+        //console.log(store.movie)
+      }) 
+
     },
 
     getSeries() {
@@ -54,7 +55,8 @@ import axios from 'axios';
 
       axios.get(apiurl, {params}).then((res) => {
         store.tv = res.data.results;
-        console.log(store.tv)
+        //console.log(store.tv)
+        
       })
     }
   },

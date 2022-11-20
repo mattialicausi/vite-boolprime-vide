@@ -28,7 +28,7 @@ import {store} from '../store';
         methods: {
             getCards() {
                 store.params.query = this.queryName  
-                console.log(this.queryName)
+                //console.log(this.queryName)
             }
         }
     }

@@ -7,12 +7,24 @@
         <div class="info-card">
             <h4>{{item.original_title}}</h4>
             <div>{{item.vote_average}}</div>
-            <div>{{item.original_language}}</div>
+
+            <div v-if="item.original_language" class="img-flag">
+                <img :src="this.flagURL + item.original_language" :alt="item.original_title">
+            </div>
+                
+            <div v-else>
+                <div>{{item.original_language}}</div>
+            </div>
+            
+            
         </div>
    </div>
 </template>
 
 <script>
+import { store } from '../store';
+
+
     export default {
         name: 'CardComponent',
 
@@ -22,9 +34,11 @@
 
         data() {
             return {
+                flagURL: 'https://countryflagsapi.com/png/',
                 baseIMG: 'https://image.tmdb.org/t/p/w300/',
             }
         },
+
     }
 </script>
 
@@ -34,6 +48,16 @@
         position: absolute;
         top: 50%;
         left: 10px;
+    }
+
+    .img-flag{
+        width: 50px;
+        height: 50px;
+
+
+        img{
+            width: 100%;
+        }
     }
 
 </style>

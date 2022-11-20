@@ -18,4 +18,6 @@ export const store = reactive({
     movie: [],
     tv: [],
     polular: [],
+
+    
 });
